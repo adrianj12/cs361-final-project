@@ -1,3 +1,9 @@
+/*
+ * Adrian Abeyta <ajabeyta@unm.edu>
+ * Final Project - Sorting Algorithms
+ * CS 361 - Prof. Luan
+ * 12.6.2023
+ */
 import java.io.File;
 import java.util.Scanner;
 
