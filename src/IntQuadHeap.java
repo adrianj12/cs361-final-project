@@ -8,7 +8,7 @@
 public class IntQuadHeap {
 
     /* Heap properties */
-    private int[] minHeap;
+    private final int[] minHeap;
     private int size;
 
     public IntQuadHeap(int n) {

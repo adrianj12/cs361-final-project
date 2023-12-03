@@ -8,7 +8,7 @@
 public class DoubleQuadHeap {
 
     /* Heap properties */
-    private double[] minHeap;
+    private final double[] minHeap;
     private int size;
 
     public DoubleQuadHeap(int n) {
