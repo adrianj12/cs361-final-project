@@ -25,10 +25,10 @@ public class DoubleQuadHeap {
         minHeap[size] = key;
         size++;
 
-        while(i != 0 && (minHeap[i] < minHeap[parent(i)])) {
+        while(i != 0 && (minHeap[i] < minHeap[getParent(i)])) {
 
-            swap(i, parent(i));
-            i = parent(i);
+            swap(i, getParent(i));
+            i = getParent(i);
 
         }
 
@@ -39,9 +39,10 @@ public class DoubleQuadHeap {
         int min = index;
         int child;
 
+        // iterate over children
         for(int i = 1; i <= 4; i++) {
 
-            child = child(index, i);
+            child = getChild(index, i);
             if(child < size && minHeap[child] < minHeap[min])
                 min = child;
 
@@ -93,11 +94,11 @@ public class DoubleQuadHeap {
 
     }
 
-    private int parent(int index) {
+    private int getParent(int index) {
         return (index - 1) / 4;
     }
 
-    private int child(int index, int k) {
+    private int getChild(int index, int k) {
         return (4 * index) + k;
     }
 
