@@ -49,7 +49,7 @@ public class testRandomizedQuicksort {
         }
 
         /** Testing doubles **/
-/*
+
         for(int i = 0; i <= 10; i++) {
 
             fileRead = new FileRead("C:\\Users\\ajasa\\2_" + powersOfTwo[i] + "_double.txt");
@@ -69,7 +69,7 @@ public class testRandomizedQuicksort {
             fileRead.closeFile();
 
         }
-*/
+
     }
 
 }

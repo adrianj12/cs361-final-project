@@ -24,6 +24,14 @@ class RandomizedQuickSort {
         }
     }
 
+    private static void swap(double[] array, int i, int j) {
+        if (i != j) {
+            double temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+    }
+
     /**
      * Partitions the array around a pivot. All elements less than the pivot are moved to its left,
      * and all greater elements are moved to its right. The pivot is chosen randomly.
@@ -41,6 +49,24 @@ class RandomizedQuickSort {
         int pivot = array[high];
         int i = (low - 1); // Tracks the position for swapping.
 
+        for (int j = low; j < high; j++) {
+            // Move elements smaller than pivot to the left.
+            if (array[j] < pivot) {
+                i++;
+                swap(array, i, j);
+            }
+        }
+        // Place the pivot in its correct position.
+        swap(array, i + 1, high);
+        return i + 1;
+    }
+
+    private static int partition(double[] array, int low, int high) {
+        // Randomization of the pivot to improve performance on sorted data.
+        int pivotIndex = low + (int) (Math.random() * (high - low));
+        swap(array, pivotIndex, high);
+        double pivot = array[high];
+        int i = (low - 1); // Tracks the position for swapping.
         for (int j = low; j < high; j++) {
             // Move elements smaller than pivot to the left.
             if (array[j] < pivot) {
@@ -87,4 +113,30 @@ class RandomizedQuickSort {
             }
         }
     }
+
+    static void quickSort(double[] array, int startIndex, int endIndex) {
+        List<Integer> stack = new ArrayList<>();
+        // Initialize the stack with the initial range to be sorted.
+        stack.add(startIndex);
+        stack.add(endIndex);
+        // Continuously sort the array until the stack is empty.
+        while (!stack.isEmpty()) {
+            endIndex = stack.remove(stack.size() - 1);
+            startIndex = stack.remove(stack.size() - 1);
+            int partitionIndex = partition(array, startIndex, endIndex);
+            // If there are elements on the left side of the pivot, add them to the stack.
+            if (partitionIndex - 1 > startIndex) {
+                stack.add(startIndex);
+                stack.add(partitionIndex - 1);
+            }
+            // If there are elements on the right side of the pivot, add them to the stack.
+            if (partitionIndex + 1 < endIndex) {
+                stack.add(partitionIndex + 1);
+                stack.add(endIndex);
+            }
+
+        }
+
+    }
+
 }
